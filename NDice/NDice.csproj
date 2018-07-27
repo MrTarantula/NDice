@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>NDice</PackageId>
+    <Title>NDice</Title>
+    <Description>Fair and weighted dice for C# and .Net.</Description>
+    <Version>1.0.0</Version>
+    <Authors>Ryan Tauriainen</Authors>
+    <PackageLicenseUrl>https://github.com/MrTarantula/gamblers-dice/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/MrTarantula/gamblers-dice</RepositoryUrl>
+    <ProjectUrl>https://github.com/MrTarantula/gamblers-dice</ProjectUrl>
+    <PackageTags>dice;random;gambler;weighted</PackageTags> 
+  </PropertyGroup>
+
+</Project>
