@@ -1,6 +1,6 @@
 # NDice
 
-A better description
+Dice toolkit for .Net. Included are some novel dice implementations for .Net. 
 
 ## Installation
 
@@ -32,6 +32,10 @@ Die with one or more sides weighted to have a higher probablility of occurrence.
 
 Weighted die that obeys the [Gambler's Fallacy](https://github.com/xori/gamblers-dice). The weight shifts after each roll, so that the longer a side has not been rolled, the higher its probability of occurrence for the next roll.
 
+### `TappersDie`
+
+A [tapper's die](http://www.dice-play.com/DiceCrooked.htm) behaves like a fair die, until it is tapped. Then it behaves like a weighted die until it is tapped again.
+
 ## Examples
 
 Dice can be constructed with a default of six sides, or any number of sides:
@@ -44,7 +48,7 @@ var weightedDie = new WeightedDie();
 var bigFairDie = new Die(225);
 ```
 
-> NOTE: A `WeightedDie` constructed with no weights will behave like a fair die
+> NOTE: Most types of weighted dice constructed with no weights will behave like a fair die
 
 `WeightedDie` and dice derived from it (e.g. `GamblersDie`) can be constructed with weights for each side, using a series of numbers or an array:
 
@@ -77,9 +81,21 @@ var die2 = new GamblersDie(rnd, 20);
 
 ## Real World Examples
 
-```C#
-var d20 = new Die(20);
-```
+Die | Code
+:-: | -
+D20<br>![D20](d20.png) | <pre>var d20 = new Die(20);</pre>
+[Average Die<br>![Average Die](avg.png)](https://em4miniatures.com/index.php/catalogsearch/result/?q=+average+dice) | <pre>var avgDie = new WeightedDie(1, 2, 2, 1);<br>int[] sides = new int[] { 2, 3, 4, 5 };<br><br>// Roll the die, then get the value<br>avgDie.Roll();<br>int rolledSide = sides[avgDie.Current];
+Double Deuce<br>![Double Deuce](double2.png) | <pre>var d2Die = new WeightedDie(1, 2, 1, 1, 1);<br>int[] sides = new int[] { 1, 2, 3, 4, 6 };<br><br>// Roll the die, then get the value<br>d2Die.Roll();<br>int rolledSide = sides[d2Die.Current];
+
+## Future Work
+
+- [ ] More real world examples
+- [ ] Percentages/ratios for weight
+- [ ] Include common dice like the examples 
+- [ ] Built-in labels
+- [ ] Fluent die builder
+- [ ] Abstraction for randomizer, so other libs/algorithms may be used
+- [ ] More dice algorithms! (statisticians/dice enthusiasts needed. PRs welcome)
 
 ## Acknowledgements
 

@@ -10,10 +10,10 @@
     <Description>Fair and weighted dice for C# and .Net.</Description>
     <Version>1.0.0</Version>
     <Authors>Ryan Tauriainen</Authors>
-    <PackageLicenseUrl>https://github.com/MrTarantula/gamblers-dice/blob/master/LICENSE</PackageLicenseUrl>
-    <RepositoryUrl>https://github.com/MrTarantula/gamblers-dice</RepositoryUrl>
-    <ProjectUrl>https://github.com/MrTarantula/gamblers-dice</ProjectUrl>
-    <PackageTags>dice;random;gambler;weighted</PackageTags> 
+    <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>
+    <ProjectUrl>https://github.com/MrTarantula/NDice</ProjectUrl>
+    <PackageTags>dice;random;gambler;weighted;probability;statistics</PackageTags> 
   </PropertyGroup>
 
 </Project>
