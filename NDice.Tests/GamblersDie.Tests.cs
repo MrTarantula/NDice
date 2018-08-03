@@ -7,7 +7,7 @@ namespace NDice.Tests
     [Trait("Category", "Gamblers")]
     public class GamblersDieTests
     {
-                Random _rnd = new Random();
+                IRandomizable _rnd = new SystemRandomizable();
                 
         [Fact]
         public void ConstructDie() => Assert.IsType<GamblersDie>(new GamblersDie());

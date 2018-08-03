@@ -22,7 +22,7 @@ int result = die.Roll();
 
 ### `Die`
 
-A fair die. It is not weighted, and as random as `System.Random` can be.
+A fair die. It is not weighted, and as random as its randomizer can be.
 
 ### `WeightedDie`
 
@@ -67,10 +67,26 @@ int likelyTwo = firstRollLikelyTwo.Roll();
 int likelyAnythingButTwo = firstRollLikelyTwo.Roll();
 ```
 
-By default a private `System.Random` object is created for each die, but a shared `Random` can be passed as the first parameter for any die:
+## `IRandomizable`
+
+By default `System.Random` is used to roll the die, but a generic interface `IRandomizable` can be implemented and used with any die. Below is a terrible randomizer that uses the current time to generate a "random" number.
 
 ```C#
-var rnd = new Random();
+public class SecondsRandomizable : IRandomizable
+{
+    public int Get(int maxValue)
+    {
+        int.TryParse(DateTime.Now.ToString("ss"), out int seconds);
+
+        return seconds % maxValue;
+    }
+}
+```
+
+And it can be used as the first parameter when constructing a die:
+
+```C#
+var rnd = new SecondsRandomizable();
 
 var die0 = new Die(rnd, 8);
 
@@ -91,10 +107,10 @@ Double Deuce<br>![Double Deuce](double2.png) | <pre>var d2Die = new WeightedDie(
 
 - [ ] More real world examples
 - [ ] Percentages/ratios for weight
-- [ ] Include common dice like the examples 
+- [ ] Include common dice like the examples
 - [ ] Built-in labels
 - [ ] Fluent die builder
-- [ ] Abstraction for randomizer, so other libs/algorithms may be used
+- [x] Abstraction for randomizer, so other libs/algorithms may be used
 - [ ] More dice algorithms! (statisticians/dice enthusiasts needed. PRs welcome)
 
 ## Acknowledgements

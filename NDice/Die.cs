@@ -6,16 +6,16 @@ namespace NDice
     {
         public int Sides { get; protected set; }
         public int Current { get; protected set; }
-        protected Random _rnd;
+        protected IRandomizable _rnd;
 
         /// <summary>Initializes a new fair die with the specified number of sides. Default is six.</summary>
         /// <param name="sides">Number of sides on the die.</param>
-        public Die(int sides = 6) : this(new Random(), sides) { }
+        public Die(int sides = 6) : this(new SystemRandomizable(), sides) { }
 
         /// <summary>Initializes a new fair die with the specified number of sides. Default is six. Bring your own <c>Random</c> object.</summary>
         /// <param name="rnd"><c>Random</c> object to be used when rolling the die.</param>
         /// <param name="sides">Number of sides on the die.</param>
-        public Die(Random rnd, int sides = 6)
+        public Die(IRandomizable rnd, int sides = 6)
         {
             _rnd = rnd;
             Sides = sides;
@@ -23,6 +23,6 @@ namespace NDice
 
         /// <summary>Rolls the die.</summary>
         /// <returns>Returns the side rolled.</returns>
-        public virtual int Roll() => Current = _rnd.Next(Sides);
+        public virtual int Roll() => Current = _rnd.Get(Sides);
     }
 }

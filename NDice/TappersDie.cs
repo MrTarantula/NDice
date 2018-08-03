@@ -25,19 +25,19 @@ namespace NDice
             _die = new Die(weights.Length);
         }
 
-        public TappersDie(Random rnd) : base(rnd)
+        public TappersDie(IRandomizable rnd) : base(rnd)
         {
             Tapped = false;
             _die = new Die(6);
         }
 
-        public TappersDie(Random rnd, bool tapped, int sides = 6) : base(rnd, sides)
+        public TappersDie(IRandomizable rnd, bool tapped, int sides = 6) : base(rnd, sides)
         {
             Tapped = tapped;
             _die = new Die(sides);
         }
 
-        public TappersDie(Random rnd, bool tapped, params int[] weights) : base(rnd, weights)
+        public TappersDie(IRandomizable rnd, bool tapped, params int[] weights) : base(rnd, weights)
         {
             Tapped = tapped;
             _die = new Die(weights.Length);
@@ -45,8 +45,8 @@ namespace NDice
 
         public TappersDie(int sides) : this(false, sides) { }
         public TappersDie(params int[] weights) : this(false, weights) { }
-        public TappersDie(Random rnd, int sides) : this(rnd, false, sides) { }
-        public TappersDie(Random rnd, params int[] weights) : this(rnd, false, weights) { }
+        public TappersDie(IRandomizable rnd, int sides) : this(rnd, false, sides) { }
+        public TappersDie(IRandomizable rnd, params int[] weights) : this(rnd, false, weights) { }
 
         /// <summary>Rolls the die.</summary>
         /// <returns>Returns the side rolled.</returns>

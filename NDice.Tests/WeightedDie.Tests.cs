@@ -7,7 +7,7 @@ namespace NDice.Tests
     [Trait("Category", "Weighted")]
     public class WeightedDieTests
     {
-        Random _rnd = new Random();
+        IRandomizable _rnd = new SystemRandomizable();
 
         [Fact]
         public void ConstructDie() => Assert.IsType<WeightedDie>(new WeightedDie());
