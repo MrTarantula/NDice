@@ -22,6 +22,10 @@ namespace NDice
         /// <param name="weights">Pre-calculated weights of the sides of the die.</param>
         public GamblersDie(IRandomizable rnd, params int[] weights) : base(rnd, weights) { }
 
+        public GamblersDie(params double[] weights) : this(new SystemRandomizable(), weights) { }
+
+        public GamblersDie(IRandomizable rnd, params double[] weights) : base(rnd, weights) { }
+
         /// <summary>Rolls the die.</summary>
         /// <returns>Returns the side rolled.</returns>
         public override int Roll()

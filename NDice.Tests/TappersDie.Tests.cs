@@ -74,5 +74,31 @@ namespace NDice.Tests
             Assert.True(result[5] / iters < 0.001M);
             Assert.True(result[6] / iters < 0.001M);
         }
+
+         [Trait("Category", "Double")]
+        [Fact]
+        public void NormalizeWeights()
+        {
+            var die = new TappersDie(0.25, 0.25, 0.5);
+            Assert.Equal(1, die.Weight[0]);
+            Assert.Equal(1, die.Weight[1]);
+            Assert.Equal(2, die.Weight[2]);
+        }
+
+        [Trait("Category", "Double")]
+        [Fact]
+        public void NormalizeWeights_Imprecise()
+        {
+            var die = new TappersDie(0.33, 0.33, 0.34);
+            Assert.Equal(1, die.Weight[0]);
+            Assert.Equal(1, die.Weight[1]);
+            Assert.Equal(1, die.Weight[2]);
+        }
+
+        [Trait("Category", "Double")]
+        [Theory]
+        [InlineData(0.25, 0.33, 0.33)]
+        [InlineData(0.25, 0.25, 0.75)]
+        public void NormalizeWeights_ThrowIfNot1(double a, double b, double c) => Assert.Throws<Exception>(() => new TappersDie(a, b, c));
     }
 }

@@ -24,6 +24,35 @@ namespace NDice
             }
         }
 
+        public WeightedDie(params double[] weights) : this(new SystemRandomizable(), weights) { }
+        
+        public WeightedDie(IRandomizable rnd, params double[] weights) : base(rnd, weights.Length)
+        {
+            double total = 0;
+            double smallest = weights[0];
+            int[] normalizedWeights = new int[weights.Length];
+
+            foreach (var w in weights)
+            {
+                smallest = w < smallest ? w : smallest;
+                total += w;
+            }
+
+            if (total != 1.0)
+            {
+                throw new Exception("Weights must add up to 1.0");
+            }
+
+            double multiplier = 1 / smallest;
+
+            for (int i = 0; i < weights.Length; i++)
+            {
+                normalizedWeights[i] = (int)(weights[i] * multiplier);
+            }
+
+            Weight = normalizedWeights;
+        }
+
         public WeightedDie(params int[] weights) : this(new SystemRandomizable(), weights) { }
 
         /// <summary>Initializes a new weighted die with known weights. Bring your own <c>Random</c> object.</summary>

@@ -50,7 +50,9 @@ var bigFairDie = new Die(225);
 
 > NOTE: Most types of weighted dice constructed with no weights will behave like a fair die
 
-`WeightedDie` and dice derived from it (e.g. `GamblersDie`) can be constructed with weights for each side, using a series of numbers or an array:
+`WeightedDie` and dice derived from it (e.g. `GamblersDie`) can be constructed with weights for each side, using a series of numbers or an array. 
+
+> Percentages can be used, but the total weight must equal 1. Try to use nicely dividable percentages, otherwise some precision may be lost. 
 
 ```C#
 // Six-sided die with side 4 heavily weighted
@@ -60,11 +62,14 @@ int probablyFour = luckyFour.Roll();
 int alsoProbablyFour = luckyFour.Roll();
 
 // Ten-sided gambler's die, with side 2 heavily weighted
-int[] weights = new Int[] { 1, 5, 1, 1, 1, 1, 1, 1, 1, 1 };
+int[] weights = new int[] { 1, 5, 1, 1, 1, 1, 1, 1, 1, 1 };
 var firstRollLikelyTwo = new GamblersDie(weights);
 
 int likelyTwo = firstRollLikelyTwo.Roll();
 int likelyAnythingButTwo = firstRollLikelyTwo.Roll();
+
+double[] percentWeights = new double(0.125, 0.125, 0.5, 0.125, 0.125);
+var percentWeightedDie = new WeightedDie(percentWeights);
 ```
 
 ## `IRandomizable`
@@ -106,11 +111,12 @@ Double Deuce<br>![Double Deuce](double2.png) | <pre>var d2Die = new WeightedDie(
 ## Future Work
 
 - [ ] More real world examples
-- [ ] Percentages/ratios for weight
-- [ ] Include common dice like the examples
+- [x] Percentages/ratios for weight
+- [ ] Include common dice like the examples (another package)
 - [ ] Built-in labels
 - [ ] Fluent die builder
 - [x] Abstraction for randomizer, so other libs/algorithms may be used
+- [ ] Extension package for other implementations of `IRandomizable` 
 - [ ] More dice algorithms! (statisticians/dice enthusiasts needed. PRs welcome)
 
 ## Acknowledgements
