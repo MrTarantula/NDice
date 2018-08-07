@@ -1,7 +1,10 @@
+using System;
+using System.Runtime.Serialization;
+
 namespace NDice
 {
-	[System.Serializable]
-	public class LabelMissingException : System.Exception
+	[Serializable]
+	public class LabelMissingException : Exception
 	{
 		public LabelMissingException()
 		{
@@ -12,14 +15,12 @@ namespace NDice
 		{
 		}
 
-		public LabelMissingException(string message, System.Exception inner) 
+		public LabelMissingException(string message, Exception inner) 
 			: base(message, inner)
 		{
 		}
 
-		protected LabelMissingException(
-		  System.Runtime.Serialization.SerializationInfo info,
-		  System.Runtime.Serialization.StreamingContext context) 
+		protected LabelMissingException(SerializationInfo info, StreamingContext context) 
 			: base(info, context)
 		{
 		}

@@ -10,7 +10,7 @@ namespace NDice.Tests
 	public class DieLabellerTests
 	{
 		[Fact]
-		public void DieLabeller_LabelsDieRollProperly()
+		public void DieLabeler_LabelsDieRollProperly()
 		{
 			Dictionary<int, string> labels = new Dictionary<int, string>
 			{
@@ -22,15 +22,15 @@ namespace NDice.Tests
 
 			dieMock.Setup(d => d.Roll()).Returns(2);
 
-			DieLabeller<string> labeller = new DieLabeller<string>(dieMock.Object, labels);
+			DieLabeler<string> labeler = new DieLabeler<string>(dieMock.Object, labels);
 
-			string actualLabel = labeller.Roll();
+			string actualLabel = labeler.Roll();
 
 			Assert.Equal("Two", actualLabel);
 		}
 
 		[Fact]
-		public void DieLabeller_ReturnsDefaultTLabelValueWhenLabelIsMissing()
+		public void DieLabeler_ReturnsDefaultTLabelValueWhenLabelIsMissing()
 		{
 			Dictionary<int, string> labels = new Dictionary<int, string>();
 
@@ -38,15 +38,15 @@ namespace NDice.Tests
 
 			dieMock.Setup(d => d.Roll()).Returns(1);
 
-			DieLabeller<string> labeller = new DieLabeller<string>(dieMock.Object, labels);
+			DieLabeler<string> labeler = new DieLabeler<string>(dieMock.Object, labels);
 
-			string actualLabel = labeller.Roll();
+			string actualLabel = labeler.Roll();
 
 			Assert.Equal(default(string), actualLabel);
 		}
 
 		[Fact]
-		public void DieLabeller_ThrowaWhenLabelIsMissingIfConfigured()
+		public void DieLabeler_ThrowaWhenLabelIsMissingIfConfigured()
 		{
 			Dictionary<int, string> labels = new Dictionary<int, string>();
 
@@ -54,9 +54,9 @@ namespace NDice.Tests
 
 			dieMock.Setup(d => d.Roll()).Returns(1);
 
-			DieLabeller<string> labeller = new DieLabeller<string>(dieMock.Object, labels, throwsIfLabelMissing: true);
+			DieLabeler<string> labeler = new DieLabeler<string>(dieMock.Object, labels, throwsIfLabelMissing: true);
 
-			Func<string> roll = labeller.Roll;
+			Func<string> roll = labeler.Roll;
 
 			Assert.Throws<LabelMissingException>(roll);
 		}
