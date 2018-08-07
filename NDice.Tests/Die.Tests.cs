@@ -7,7 +7,7 @@ namespace NDice.Tests
     [Trait("Category", "Die")]
     public class DieTests
     {
-        Random _rnd = new Random();
+        IRandomizable _rnd = new SystemRandomizable();
 
         [Fact]
         public void ConstructFairDie() => Assert.IsType<Die>(new Die());

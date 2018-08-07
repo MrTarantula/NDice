@@ -7,8 +7,8 @@ namespace NDice.Tests
     [Trait("Category", "Gamblers")]
     public class GamblersDieTests
     {
-                Random _rnd = new Random();
-                
+        IRandomizable _rnd = new SystemRandomizable();
+
         [Fact]
         public void ConstructDie() => Assert.IsType<GamblersDie>(new GamblersDie());
 
@@ -32,6 +32,32 @@ namespace NDice.Tests
 
         [Fact]
         public void ConstructDie_Weights_Array_Random() => Assert.IsType<GamblersDie>(new GamblersDie(_rnd, new int[] { 1, 2, 3, 4, 5, 6 }));
+
+        [Trait("Category", "Double")]
+        [Fact]
+        public void NormalizeWeights()
+        {
+            var die = new GamblersDie(0.25, 0.25, 0.5);
+            Assert.Equal(1, die.Weight[0]);
+            Assert.Equal(1, die.Weight[1]);
+            Assert.Equal(2, die.Weight[2]);
+        }
+
+        [Trait("Category", "Double")]
+        [Fact]
+        public void NormalizeWeights_Imprecise()
+        {
+            var die = new GamblersDie(0.33, 0.33, 0.34);
+            Assert.Equal(1, die.Weight[0]);
+            Assert.Equal(1, die.Weight[1]);
+            Assert.Equal(1, die.Weight[2]);
+        }
+
+        [Trait("Category", "Double")]
+        [Theory]
+        [InlineData(0.25, 0.33, 0.33)]
+        [InlineData(0.25, 0.25, 0.75)]
+        public void NormalizeWeights_ThrowIfNot1(double a, double b, double c) => Assert.Throws<Exception>(() => new GamblersDie(a, b, c));
 
         [Theory]
         [InlineData(6)]
