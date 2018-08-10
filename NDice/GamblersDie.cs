@@ -45,7 +45,7 @@ namespace NDice
                 }
             }
 
-            return Current = target;
+            return Current;
         }
     }
 }

@@ -8,7 +8,7 @@
     <PackageId>NDice</PackageId>
     <Title>NDice</Title>
     <Description>Fair and weighted dice for C# and .Net.</Description>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>

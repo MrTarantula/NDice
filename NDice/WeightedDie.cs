@@ -28,26 +28,28 @@ namespace NDice
         
         public WeightedDie(IRandomizable rnd, params double[] weights) : base(rnd, weights.Length)
         {
-            double total = 0;
-            double smallest = weights[0];
-            int[] normalizedWeights = new int[weights.Length];
+            decimal total = 0M;
+            decimal[] decWeights = Array.ConvertAll(weights, x => (decimal)x);
 
-            foreach (var w in weights)
+            var smallest = decWeights[0];
+            int[] normalizedWeights = new int[decWeights.Length];
+
+            foreach (var w in decWeights)
             {
                 smallest = w < smallest ? w : smallest;
                 total += w;
             }
 
-            if (total != 1.0)
+            if (total != 1.0M)
             {
                 throw new Exception("Weights must add up to 1.0");
             }
 
-            double multiplier = 1 / smallest;
+            var multiplier = 1 / smallest;
 
-            for (int i = 0; i < weights.Length; i++)
+            for (int i = 0; i < decWeights.Length; i++)
             {
-                normalizedWeights[i] = (int)(weights[i] * multiplier);
+                normalizedWeights[i] = (int)(decWeights[i] * multiplier);
             }
 
             Weight = normalizedWeights;

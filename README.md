@@ -1,6 +1,6 @@
 # NDice
 
-Dice toolkit for .Net. Included are some novel dice implementations for .Net. 
+Dice toolkit for .Net. Included are some novel dice implementations.
 
 ## Installation
 

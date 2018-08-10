@@ -43,15 +43,15 @@ namespace NDice
             _die = new Die(weights.Length);
         }
 
-        public TappersDie(params double[] weights) : this(false, weights) { }
-
-        public TappersDie(bool tapped, params double[] weights) : this(new SystemRandomizable(), tapped = false, weights) { }
-        public TappersDie(IRandomizable rnd, params double[] weights) : this(rnd, false, weights) { }
         public TappersDie(IRandomizable rnd, bool tapped, params double[] weights) : base(rnd, weights)
         {
-            Tapped = false;
+            Tapped = tapped;
             _die = new Die(weights.Length);
         }
+
+        public TappersDie(params double[] weights) : this(false, weights) { }
+        public TappersDie(bool tapped, params double[] weights) : this(new SystemRandomizable(), tapped = false, weights) { }
+        public TappersDie(IRandomizable rnd, params double[] weights) : this(rnd, false, weights) { }
         public TappersDie(int sides) : this(false, sides) { }
         public TappersDie(params int[] weights) : this(false, weights) { }
         public TappersDie(IRandomizable rnd, int sides) : this(rnd, false, sides) { }
@@ -59,7 +59,7 @@ namespace NDice
 
         /// <summary>Rolls the die.</summary>
         /// <returns>Returns the side rolled.</returns>
-        public override int Roll() => Tapped ? base.Roll() : _die.Roll();
+        public override int Roll() => Current = Tapped ? base.Roll() : _die.Roll();
 
         public void Tap() => Tapped = !Tapped;
     }
