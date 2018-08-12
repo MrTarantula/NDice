@@ -9,8 +9,8 @@ namespace NDice
 	/// </summary>
     public class DieLabeler<TLabel>
     {
-		private readonly IDie _die = null;
-		private readonly IReadOnlyDictionary<int, TLabel> _labels = null;
+		private readonly IDie _die;
+		private readonly IReadOnlyDictionary<int, TLabel> _labels;
 		private readonly bool _throwsIfLabelMissing = false;
 
 		public DieLabeler(IDie die, IReadOnlyDictionary<int, TLabel> labels)
