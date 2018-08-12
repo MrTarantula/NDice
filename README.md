@@ -100,6 +100,35 @@ var die1 = new WeightedDie(rnd, 1, 1, 1, 7, 1, 1, 1);
 var die2 = new GamblersDie(rnd, 20);
 ```
 
+## `DieLabeler`
+
+All dies roll numbers, `DieLabeler<TLabel>` can be used to roll objects instead of numbers.  
+Numbers are mapped to objects by `DieLabeler<TLabel>` using a dictionary where each key-value pair represents a number and the object mapped to that number.  
+By default any missing number to object mapping will return `default(TLabel)`, otherwise `DieLabeler<TLabel>` can be configured to throw exceptions for missing mappings.  
+
+To use `DieLabeler<TLabel>` construct a new instance and pass it the number to label mappings and an instance of `IDie`.  
+Below an example usage of the `DieLabeler` with labels of type `string`:  
+
+```C#
+
+Dictionary<int, string> labels = new Dictionary<int, string>
+{
+	{1, "One" },
+	{2, "Two" },
+	{3, "Three" },
+	{4, "Four" },
+	{5, "Five" }
+	{6, "Six" }
+};
+
+Die aDie = new Die();
+
+DieLabeler<string> labeledDie = new DieLabeler<string>(aDie, labels);
+
+string result = labeledDie.Roll();
+
+```
+
 ## Real World Examples
 
 Die | Code
@@ -113,7 +142,7 @@ Double Deuce<br>![Double Deuce](double2.png) | <pre>var d2Die = new WeightedDie(
 - [ ] More real world examples
 - [x] Percentages/ratios for weight
 - [ ] Include common dice like the examples (another package)
-- [ ] Built-in labels
+- [x] Built-in labels
 - [ ] Fluent die builder
 - [x] Abstraction for randomizer, so other libs/algorithms may be used
 - [ ] Extension package for other implementations of `IRandomizable` 
