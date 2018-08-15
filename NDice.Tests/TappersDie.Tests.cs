@@ -6,7 +6,7 @@ namespace NDice.Tests
     [Trait("Category", "Tappers")]
     public class TappersDieTests
     {
-        IRandomizable _rnd = new SystemRandomizable();
+        IRandomizable _rnd = new SystemRandomizer();
 
         [Fact]
         public void Tappers_DefaultNotTapped()

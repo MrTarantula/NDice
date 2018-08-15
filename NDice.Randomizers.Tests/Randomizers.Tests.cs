@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using NDice.Randomizers.RandomOrg;
-using NDice.Randomizers.Troschuetz;
+using NDice.Randomizers;
 using Xunit;
 
 namespace NDice.Randomizers.Tests
 {
-    public class RandomOrgTests
+    public class RandomizersTests
     {
         public static IEnumerable<object[]> Randomizers()
         {
-            yield return new object[] { new RandomOrgRandomizable("4d80880f-2b77-414e-b0b8-9390499381af") };
-            yield return new object[] { new TroschuetzRandomizable() };
+            yield return new object[] { new RandomOrgRandomizer("4d80880f-2b77-414e-b0b8-9390499381af", 20) };
+            yield return new object[] { new TroschuetzRandomizer() };
+            yield return new object[] { new SystemCryptoRandomizer() };
         }
 
         [Theory]

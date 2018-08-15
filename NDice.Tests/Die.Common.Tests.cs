@@ -7,7 +7,7 @@ namespace NDice.Tests
     [Trait("Category", "Common")]
     public class CommonTests
     {
-        public static SystemRandomizable rnd = new SystemRandomizable();
+        public static SystemRandomizer rnd = new SystemRandomizer();
         public static IEnumerable<object[]> Constructors_NoRandom()
         {
             yield return new object[] { new Die() };

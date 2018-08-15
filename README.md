@@ -2,6 +2,8 @@
 
 Dice toolkit for .Net. Included are some novel dice implementations.
 
+> API is very unstable and will be for a while.
+
 ## Installation
 
 ```C#
@@ -77,7 +79,7 @@ var percentWeightedDie = new WeightedDie(percentWeights);
 By default `System.Random` is used to roll the die, but a generic interface `IRandomizable` can be implemented and used with any die. Below is a terrible randomizer that uses the current time to generate a "random" number.
 
 ```C#
-public class SecondsRandomizable : IRandomizable
+public class SecondsRandomizer : IRandomizable
 {
     public int Get(int maxValue)
     {
@@ -91,7 +93,7 @@ public class SecondsRandomizable : IRandomizable
 And it can be used as the first parameter when constructing a die:
 
 ```C#
-var rnd = new SecondsRandomizable();
+var rnd = new SecondsRandomizer();
 
 var die0 = new Die(rnd, 8);
 
@@ -145,7 +147,7 @@ Double Deuce<br>![Double Deuce](double2.png) | <pre>var d2Die = new WeightedDie(
 - [x] Built-in labels
 - [ ] Fluent die builder
 - [x] Abstraction for randomizer, so other libs/algorithms may be used
-- [ ] Extension package for other implementations of `IRandomizable` 
+- [x] Extension package for other implementations of `IRandomizable` 
 - [ ] More dice algorithms! (statisticians/dice enthusiasts needed. PRs welcome)
 
 ## Acknowledgements

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.4.0" />
+        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.4.0" />
+        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.4.0" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>NDice.Randomizers</PackageId>
+        <Title>NDice.Randomizers</Title>
+        <Description>Official NDice metapackage for randomizers</Description>
+        <Version>0.4.0</Version>
+        <Authors>Ryan Tauriainen</Authors>
+        <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>
+        <ProjectUrl>https://github.com/MrTarantula/NDice</ProjectUrl>
+        <PackageTags>dice;random;gambler;weighted;probability;statistics</PackageTags>
+    </PropertyGroup>
+
+</Project>

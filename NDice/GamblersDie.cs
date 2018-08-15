@@ -22,7 +22,7 @@ namespace NDice
         /// <param name="weights">Pre-calculated weights of the sides of the die.</param>
         public GamblersDie(IRandomizable rnd, params int[] weights) : base(rnd, weights) { }
 
-        public GamblersDie(params double[] weights) : this(new SystemRandomizable(), weights) { }
+        public GamblersDie(params double[] weights) : this(new SystemRandomizer(), weights) { }
 
         public GamblersDie(IRandomizable rnd, params double[] weights) : base(rnd, weights) { }
 

@@ -7,7 +7,7 @@ namespace NDice.Tests
     [Trait("Category", "Uniformity")]
     public class UniformityTests
     {
-        private static SystemRandomizable rnd = new SystemRandomizable();
+        private static SystemRandomizer rnd = new SystemRandomizer();
         public static IEnumerable<object[]> UniformDice()
         {
             yield return new object[] { new Die() };

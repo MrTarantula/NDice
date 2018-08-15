@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NDice.Randomizers\NDice.Randomizers.RandomOrg\NDice.Randomizers.RandomOrg.csproj" />
     <ProjectReference Include="..\NDice.Randomizers\NDice.Randomizers.Troschuetz\NDice.Randomizers.Troschuetz.csproj" />
+    <ProjectReference Include="..\NDice.Randomizers\NDice.Randomizers.SystemCrypto\NDice.Randomizers.SystemCrypto.csproj" />
   </ItemGroup>
 
   <ItemGroup>

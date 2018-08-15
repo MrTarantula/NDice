@@ -50,7 +50,7 @@ namespace NDice
         }
 
         public TappersDie(params double[] weights) : this(false, weights) { }
-        public TappersDie(bool tapped, params double[] weights) : this(new SystemRandomizable(), tapped = false, weights) { }
+        public TappersDie(bool tapped, params double[] weights) : this(new SystemRandomizer(), tapped = false, weights) { }
         public TappersDie(IRandomizable rnd, params double[] weights) : this(rnd, false, weights) { }
         public TappersDie(int sides) : this(false, sides) { }
         public TappersDie(params int[] weights) : this(false, weights) { }

@@ -9,7 +9,7 @@ namespace NDice
 
         /// <summary>Initializes a new weighted die with the specified number of sides. Default is six.</summary>
         /// <param name="size">Size of the die.</param>
-        public WeightedDie(int size = 6) : this(new SystemRandomizable(), size) { }
+        public WeightedDie(int size = 6) : this(new SystemRandomizer(), size) { }
 
         /// <summary>Initializes a new weighted die with the specified number of sides. Default is six. Bring your own <c>Random</c> object.</summary>
         /// <param name="rnd"><c>Random</c> object to be used when rolling the die.</param>
@@ -24,7 +24,7 @@ namespace NDice
             }
         }
 
-        public WeightedDie(params double[] weights) : this(new SystemRandomizable(), weights) { }
+        public WeightedDie(params double[] weights) : this(new SystemRandomizer(), weights) { }
         
         public WeightedDie(IRandomizable rnd, params double[] weights) : base(rnd, weights.Length)
         {
@@ -55,7 +55,7 @@ namespace NDice
             Weight = normalizedWeights;
         }
 
-        public WeightedDie(params int[] weights) : this(new SystemRandomizable(), weights) { }
+        public WeightedDie(params int[] weights) : this(new SystemRandomizer(), weights) { }
 
         /// <summary>Initializes a new weighted die with known weights. Bring your own <c>Random</c> object.</summary>
         /// <param name="rnd"><c>Random</c> object to be used when rolling the die.</param>

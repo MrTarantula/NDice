@@ -10,7 +10,7 @@ namespace NDice
 
         /// <summary>Initializes a new fair die with the specified number of sides. Default is six.</summary>
         /// <param name="sides">Number of sides on the die.</param>
-        public Die(int sides = 6) : this(new SystemRandomizable(), sides) { }
+        public Die(int sides = 6) : this(new SystemRandomizer(), sides) { }
 
         /// <summary>Initializes a new fair die with the specified number of sides. Default is six. Bring your own <c>Random</c> object.</summary>
         /// <param name="rnd"><c>Random</c> object to be used when rolling the die.</param>

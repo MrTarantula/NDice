@@ -9,4 +9,20 @@
     <PackageReference Include="NDice" Version="0.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\NDice\NDice.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageId>NDice.Randomizers.RandomOrg</PackageId>
+    <Title>NDice.Randomizers.RandomOrg</Title>
+    <Description>Randomizer for NDice using random.org API</Description>
+    <Version>0.4.0</Version>
+    <Authors>Ryan Tauriainen</Authors>
+    <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>
+    <ProjectUrl>https://github.com/MrTarantula/NDice</ProjectUrl>
+    <PackageTags>dice;random;gambler;weighted;probability;statistics</PackageTags>
+  </PropertyGroup>
+
 </Project>

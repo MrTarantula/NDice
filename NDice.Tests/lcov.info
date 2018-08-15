@@ -25,6 +25,41 @@ BRH:0
 FNF:5
 FNH:5
 end_of_record
+SF:C:\Users\ryan.tauriainen\gamblers-dice\NDice\DieLabeler.cs
+FN:31,TLabel NDice.DieLabeler`1::Roll()
+FNDA:3,TLabel NDice.DieLabeler`1::Roll()
+DA:32,3
+DA:33,3
+DA:35,5
+DA:37,3
+DA:39,1
+DA:42,1
+DA:43,2
+BRDA:35,32,0,2
+BRDA:37,43,0,1
+BRDA:37,43,1,1
+BRDA:35,32,1,1
+FN:16,System.Void NDice.DieLabeler`1::.ctor(NDice.IDie,System.Collections.Generic.IReadOnlyDictionary`2<System.Int32,TLabel>)
+FNDA:2,System.Void NDice.DieLabeler`1::.ctor(NDice.IDie,System.Collections.Generic.IReadOnlyDictionary`2<System.Int32,TLabel>)
+DA:17,2
+DA:18,2
+DA:19,2
+FN:13,System.Void NDice.DieLabeler`1::.ctor(NDice.IDie,System.Collections.Generic.IReadOnlyDictionary`2<System.Int32,TLabel>,System.Boolean)
+FNDA:3,System.Void NDice.DieLabeler`1::.ctor(NDice.IDie,System.Collections.Generic.IReadOnlyDictionary`2<System.Int32,TLabel>,System.Boolean)
+DA:14,3
+DA:21,3
+DA:22,3
+DA:23,3
+DA:24,3
+DA:25,3
+DA:26,3
+LF:17
+LH:17
+BRF:4
+BRH:4
+FNF:3
+FNH:3
+end_of_record
 SF:C:\Users\ryan.tauriainen\gamblers-dice\NDice\GamblersDie.cs
 FN:31,System.Int32 NDice.GamblersDie::Roll()
 FNDA:2400,System.Int32 NDice.GamblersDie::Roll()
@@ -71,15 +106,43 @@ BRH:4
 FNF:7
 FNH:7
 end_of_record
-SF:C:\Users\ryan.tauriainen\gamblers-dice\NDice\SystemRandomizable.cs
-FN:10,System.Int32 NDice.SystemRandomizable::Get(System.Int32)
-FNDA:8200,System.Int32 NDice.SystemRandomizable::Get(System.Int32)
+SF:C:\Users\ryan.tauriainen\gamblers-dice\NDice\LabelMissingException.cs
+FN:8,System.Void NDice.LabelMissingException::.ctor()
+FNDA:0,System.Void NDice.LabelMissingException::.ctor()
+DA:9,0
+DA:10,0
+DA:11,0
+FN:13,System.Void NDice.LabelMissingException::.ctor(System.String)
+FNDA:1,System.Void NDice.LabelMissingException::.ctor(System.String)
+DA:14,1
+DA:15,1
+DA:16,1
+FN:18,System.Void NDice.LabelMissingException::.ctor(System.String,System.Exception)
+FNDA:0,System.Void NDice.LabelMissingException::.ctor(System.String,System.Exception)
+DA:19,0
+DA:20,0
+DA:21,0
+FN:23,System.Void NDice.LabelMissingException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+FNDA:0,System.Void NDice.LabelMissingException::.ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
+DA:24,0
+DA:25,0
+DA:26,0
+LF:12
+LH:3
+BRF:0
+BRH:0
+FNF:4
+FNH:1
+end_of_record
+SF:C:\Users\ryan.tauriainen\gamblers-dice\NDice\SystemRandomizer.cs
+FN:10,System.Int32 NDice.SystemRandomizer::Get(System.Int32)
+FNDA:8200,System.Int32 NDice.SystemRandomizer::Get(System.Int32)
 DA:11,8200
-FN:8,System.Void NDice.SystemRandomizable::.ctor()
-FNDA:369,System.Void NDice.SystemRandomizable::.ctor()
+FN:8,System.Void NDice.SystemRandomizer::.ctor()
+FNDA:369,System.Void NDice.SystemRandomizer::.ctor()
 DA:9,369
-FN:9,System.Void NDice.SystemRandomizable::.ctor(System.Random)
-FNDA:246,System.Void NDice.SystemRandomizable::.ctor(System.Random)
+FN:9,System.Void NDice.SystemRandomizer::.ctor(System.Random)
+FNDA:246,System.Void NDice.SystemRandomizer::.ctor(System.Random)
 DA:10,246
 LF:3
 LH:3
@@ -179,8 +242,8 @@ FNH:17
 end_of_record
 SF:C:\Users\ryan.tauriainen\gamblers-dice\NDice\WeightedDie.cs
 FN:7,System.Int32[] NDice.WeightedDie::get_Weight()
-FNDA:35820,System.Int32[] NDice.WeightedDie::get_Weight()
-DA:8,35820
+FNDA:35866,System.Int32[] NDice.WeightedDie::get_Weight()
+DA:8,35866
 FN:67,System.Int32 NDice.WeightedDie::Roll()
 FNDA:4900,System.Int32 NDice.WeightedDie::Roll()
 DA:68,4900
@@ -190,15 +253,15 @@ DA:73,70300
 DA:74,27800
 DA:75,27800
 DA:76,27800
-DA:79,43456
-DA:80,16828
-DA:81,16828
-DA:82,16828
+DA:79,43548
+DA:80,16874
+DA:81,16874
+DA:82,16874
 DA:84,4900
 DA:85,4900
 BRDA:73,37,1,27800
 BRDA:73,37,0,4900
-BRDA:79,86,1,16828
+BRDA:79,86,1,16874
 BRDA:79,86,0,4900
 FN:11,System.Void NDice.WeightedDie::.ctor(System.Int32)
 FNDA:66,System.Void NDice.WeightedDie::.ctor(System.Int32)

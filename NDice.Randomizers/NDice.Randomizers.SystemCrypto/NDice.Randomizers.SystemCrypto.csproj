@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <PackageId>NDice.Randomizers.Troschuetz</PackageId>
-    <Title>NDice.Randomizers.Troschuetz</Title>
-    <Description>Randomizer for NDice using Troschuetz.Random</Description>
+    <PackageId>NDice.Randomizers.SystemCrypto</PackageId>
+    <Title>NDice.Randomizers.SystemCrypto</Title>
+    <Description>Randomizer for NDice using System.Security.Cryptography</Description>
     <Version>0.4.0</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
@@ -24,5 +24,4 @@
     <ProjectUrl>https://github.com/MrTarantula/NDice</ProjectUrl>
     <PackageTags>dice;random;gambler;weighted;probability;statistics</PackageTags>
   </PropertyGroup>
-
 </Project>

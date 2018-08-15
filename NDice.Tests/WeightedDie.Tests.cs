@@ -6,7 +6,7 @@ namespace NDice.Tests
 {
     public class WeightedDieTests
     {
-        public static SystemRandomizable rnd = new SystemRandomizable();
+        public static SystemRandomizer rnd = new SystemRandomizer();
         public static IEnumerable<object[]> NonUniformWeightedDice()
         {
             yield return new object[] { new WeightedDie(4, 3, 2, 1) };
