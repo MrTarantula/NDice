@@ -5,9 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.5.0" />
-        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.5.0" />
-        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.5.0" />
+        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.6" />
+        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.6" />
+        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.6" />
     </ItemGroup>
 
     <PropertyGroup>

@@ -1,5 +1,10 @@
 # NDice
 
+[![Build Status](https://img.shields.io/travis/MrTarantula/NDice.svg?branch=master)](https://travis-ci.org/MrTarantula/NDice)
+[![Codecov](https://img.shields.io/codecov/c/github/mrtarantula/NDice.svg)](https://codecov.io/gh/MrTarantula/NDice)
+[![NuGet](https://img.shields.io/nuget/v/NDice.svg)](https://nuget.org/packages/NDice)
+[![NuGet](https://img.shields.io/nuget/dt/NDice.svg)](https://nuget.org/packages/NDice)
+
 Dice toolkit for .Net. Construct dice with interesting behaviors.
 
 > API is very unstable and will be for a while.
@@ -7,7 +12,7 @@ Dice toolkit for .Net. Construct dice with interesting behaviors.
 ## Table of Contents
 
 - [Installation](#installation)
-- [How To Use](#how-to-use-(tl;dr))
+- [How To Use](#how-to-use-tldr)
 - [Types of Dice](#types-of-dice)
   - [Die](#die)
   - [WeightedDie](#weighteddie)

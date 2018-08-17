@@ -1,12 +1,10 @@
 language: csharp
 mono: none
-dotnet: 2.1.0
-
-install:
-- dotnet restore
+dotnet: 2.1.302
 
 script:
-- dotnet build
-- dotnet test NDice.Tests/NDice.Tests.csproj
-- dotnet test NDice.Randomizers.Tests/NDice.Randomizers.Tests.csproj
+- chmod +x travis.sh
 - ./travis.sh
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
