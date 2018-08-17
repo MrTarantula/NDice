@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Community.RandomOrg;
 
 namespace NDice.Randomizers
@@ -29,19 +28,16 @@ namespace NDice.Randomizers
             // For others, rolls are cached for efficiency
             if (_lastMax != maxValue || _lastMax == 0)
             {
-                Console.WriteLine($"maxValue has changed from {_lastMax} to {maxValue}");
                 result = _client.GenerateIntegersAsync(1, 0, maxValue - 1, true).Result.Random.Data[0];
             }
             else if (_cache == null || _index == _cacheSize)
             {
                 _cache = _client.GenerateIntegersAsync(_cacheSize, 0, maxValue - 1, true).Result.Random.Data;
-                Console.WriteLine($"Cache generated: {_cache}");
                 _index = 0;
                 result = _cache[_index++];
             }
             else
             {
-                Console.WriteLine("Taken from cache");
                 result = _cache[_index++];
             }
 

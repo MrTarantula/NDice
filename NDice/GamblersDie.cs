@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NDice
+﻿namespace NDice
 {
     public class GamblersDie : WeightedDie
     {

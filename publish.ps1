@@ -2,6 +2,6 @@ param (
     [string]$key = ""
 )
 
-dotnet pack .\NDice -c Release -o ..\nuget\ndice
+dotnet pack .\NDice -c Release -o ..\build\ndice
 
-dotnet nuget push .\nuget\ndice\ -k $key -s https://api.nuget.org/v3/index.json
+dotnet nuget push .\build\ndice\ -k $key -s https://api.nuget.org/v3/index.json

@@ -2,6 +2,6 @@ param (
     [string]$key = ""
 )
 
-dotnet pack .\NDice.Randomizers\NDice.Randomizers -c Release -o ..\..\nuget\meta
+dotnet pack .\NDice.Randomizers\NDice.Randomizers -c Release -o ..\..\build\meta
 
-dotnet nuget push .\nuget\meta\ -k $key -s https://api.nuget.org/v3/index.json
+dotnet nuget push .\build\meta\ -k $key -s https://api.nuget.org/v3/index.json

@@ -5,7 +5,7 @@ namespace NDice.Randomizers
 {
     public class SystemCryptoRandomizer : IRandomizable
     {
-        private static RNGCryptoServiceProvider _rnd;
+        private RNGCryptoServiceProvider _rnd;
 
         public SystemCryptoRandomizer() : this(new RNGCryptoServiceProvider()) { }
         public SystemCryptoRandomizer(RNGCryptoServiceProvider rnd) => _rnd = rnd;

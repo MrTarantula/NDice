@@ -1,0 +1,12 @@
+language: csharp
+mono: none
+dotnet: 2.1.0
+
+install:
+- dotnet restore
+
+script:
+- dotnet build
+- dotnet test NDice.Tests/NDice.Tests.csproj
+- dotnet test NDice.Randomizers.Tests/NDice.Randomizers.Tests.csproj
+- ./travis.sh

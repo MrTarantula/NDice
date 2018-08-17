@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NDice
+﻿namespace NDice
 {
     public class TappersDie : WeightedDie
     {
@@ -28,25 +26,25 @@ namespace NDice
         public TappersDie(IRandomizable rnd) : base(rnd)
         {
             Tapped = false;
-            _die = new Die(6);
+            _die = new Die(_rnd, 6);
         }
 
         public TappersDie(IRandomizable rnd, bool tapped, int sides = 6) : base(rnd, sides)
         {
             Tapped = tapped;
-            _die = new Die(sides);
+            _die = new Die(_rnd, sides);
         }
 
         public TappersDie(IRandomizable rnd, bool tapped, params int[] weights) : base(rnd, weights)
         {
             Tapped = tapped;
-            _die = new Die(weights.Length);
+            _die = new Die(_rnd, weights.Length);
         }
 
         public TappersDie(IRandomizable rnd, bool tapped, params double[] weights) : base(rnd, weights)
         {
             Tapped = tapped;
-            _die = new Die(weights.Length);
+            _die = new Die(_rnd, weights.Length);
         }
 
         public TappersDie(params double[] weights) : this(false, weights) { }

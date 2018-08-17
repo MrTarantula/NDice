@@ -5,7 +5,10 @@ namespace NDice
     public class Die : IDie
     {
         public int Sides { get; protected set; }
+        public string[] Labels { get; set; }
         public int Current { get; protected set; }
+        public string CurrentLabel => Labels[Current];
+
         protected IRandomizable _rnd;
 
         /// <summary>Initializes a new fair die with the specified number of sides. Default is six.</summary>
@@ -24,5 +27,9 @@ namespace NDice
         /// <summary>Rolls the die.</summary>
         /// <returns>Returns the side rolled.</returns>
         public virtual int Roll() => Current = _rnd.Get(Sides);
+        public virtual string RollLabel() {
+            Roll();
+            return CurrentLabel;
+        }
     }
 }
