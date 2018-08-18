@@ -9,7 +9,7 @@ namespace NDice.Tests
     public class WeightedDieBuilderTests
     {
         public static SystemRandomizer rnd = new SystemRandomizer();
-        public static string[] labels = { "test", "test", "test", "test", "test", "test", "test", "test", "test", "test" };
+        public static string[] labels = { "test0", "test1", "test1", "test3", "test4", "test5", "test6", "test7", "test8", "test9" };
         public static int[] weights = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         public static double[] doubleWeights = { 0.1, 0.1, 0.1, 0.1, 0.05, 0.15, 0.1, 0.1, 0.1, 0.1 };
         public static IEnumerable<object[]> DieBuilders()
@@ -57,6 +57,14 @@ namespace NDice.Tests
         public void ConstructDieBuilders(WeightedDieBuilder builder)
         {
             Assert.IsType<WeightedDie>(builder.Build());
+        }
+
+        [Theory]
+        [MemberData(nameof(DieBuilders))]
+        public void Labels(WeightedDieBuilder builder)
+        {
+            WeightedDie die = builder.Build();
+            Assert.Equal(die.Labels[0], "test0");
         }
 
         [Fact]

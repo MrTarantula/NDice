@@ -8,7 +8,7 @@ namespace NDice.Tests
     public class DieBuilderTests
     {
         public static SystemRandomizer rnd = new SystemRandomizer();
-        public static string[] labels = { "test", "test", "test", "test", "test", "test", "test", "test", "test", "test" };
+        public static string[] labels = { "test0", "test1", "test1", "test3", "test4", "test5", "test6", "test7", "test8", "test9" };
         public static IEnumerable<object[]> DieBuilders()
         {
             yield return new object[] { new DieBuilder() };
@@ -33,6 +33,14 @@ namespace NDice.Tests
         public void ConstructDieBuilders(DieBuilder builder)
         {
             Assert.IsType<Die>(builder.Build());
+        }
+
+        [Theory]
+        [MemberData(nameof(DieBuilders))]
+        public void Labels(DieBuilder builder)
+        {
+            Die die = builder.Build();
+            Assert.Equal(die.Labels[0], "test0");
         }
 
         [Fact]
