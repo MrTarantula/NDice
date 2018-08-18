@@ -7,15 +7,51 @@ namespace NDice.Builders
     where TBuilder : BaseWeightedBuilder<TDie, TBuilder>
     {
         protected int[] _weights;
+        protected bool _hasWeights;
+
+        public override TBuilder WithSides(int sides)
+        {
+            if (!_hasLabels && !_hasWeights)
+            {
+                _sides = sides;
+            }
+
+            return _instance;
+        }
+
+        public override TBuilder WithLabels(params string[] labels)
+        {
+            if (_hasWeights && _weights.Length != labels.Length)
+            {
+                throw new ArgumentException("Weights and labels must be the same length");
+            }
+
+            _labels = labels;
+            _sides = _labels.Length;
+            _hasLabels = true;
+            return _instance;
+        }
 
         public TBuilder WithWeights(params int[] weights)
         {
+            if (_hasLabels && _labels.Length != weights.Length)
+            {
+                throw new ArgumentException("Weights and labels must be the same length");
+            }
+
             _weights = weights;
+            _sides = _weights.Length;
+            _hasWeights = true;
             return _instance;
         }
 
         public TBuilder WithWeights(params double[] weights)
         {
+            if (_hasLabels && _labels.Length != weights.Length)
+            {
+                throw new ArgumentException("Weights and labels must be the same length");
+            }
+            
             decimal total = 0M;
             decimal[] decWeights = Array.ConvertAll(weights, x => (decimal)x);
 
@@ -41,6 +77,8 @@ namespace NDice.Builders
             }
 
             _weights = normalizedWeights;
+            _sides = _weights.Length;
+            _hasWeights = true;
             return _instance;
         }
     }

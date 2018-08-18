@@ -59,12 +59,22 @@ namespace NDice.Tests
             Assert.IsType<WeightedDie>(builder.Build());
         }
 
-        [Theory]
-        [MemberData(nameof(DieBuilders))]
-        public void Labels(WeightedDieBuilder builder)
+        [Fact]
+        public void ThrowWeights()
         {
-            WeightedDie die = builder.Build();
-            Assert.Equal(die.Labels[0], "test0");
+            Assert.Throws<ArgumentException>(() => new WeightedDieBuilder().WithLabels("test", "test2").WithWeights(1, 2, 3, 4));
+        }
+
+        [Fact]
+        public void ThrowWeightsDouble()
+        {
+            Assert.Throws<ArgumentException>(() => new WeightedDieBuilder().WithLabels("test", "test2").WithWeights(0.1, 0.2, 0.3, 0.4));
+        }
+
+        [Fact]
+        public void ThrowLabels()
+        {
+            Assert.Throws<ArgumentException>(() => new WeightedDieBuilder().WithWeights(1, 2, 3, 4).WithLabels("test", "test2"));
         }
 
         [Fact]

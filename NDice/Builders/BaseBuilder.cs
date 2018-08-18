@@ -9,13 +9,17 @@ namespace NDice.Builders
         protected TBuilder _instance = null;
         protected int _sides = 6;
         protected string[] _labels;
+        protected bool _hasLabels;
+
         protected IRandomizable _rnd = new SystemRandomizer();
 
         public BaseBuilder() => _instance = (TBuilder)this;
 
-        public TBuilder WithLabels(params string[] labels)
+        public virtual TBuilder WithLabels(params string[] labels)
         {
             _labels = labels;
+            _sides = _labels.Length;
+            _hasLabels = true;
             return _instance;
         }
 
@@ -31,9 +35,13 @@ namespace NDice.Builders
             return _instance;
         }
 
-        public TBuilder WithSides(int sides)
+        public virtual TBuilder WithSides(int sides)
         {
-            _sides = sides;
+            if (!_hasLabels)
+            {
+                _sides = sides;
+            }
+
             return _instance;
         }
 

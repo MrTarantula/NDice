@@ -77,12 +77,14 @@ namespace NDice.Tests
             Assert.IsType<TappersDie>(builder.Build());
         }
 
-        [Theory]
-        [MemberData(nameof(DieBuilders))]
-        public void Labels(TappersDieBuilder builder)
+        [Fact]
+        public void Labels()
         {
-            TappersDie die = builder.Build();
-            Assert.Equal(die.Labels[0], "test0");
+            TappersDie die = new TappersDieBuilder().WithLabels("test0", "test1", "test2").Build();
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.Equal(die.RollLabel(), die.Labels[die.Current]);
+            }
         }
 
         [Fact]

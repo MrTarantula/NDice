@@ -35,12 +35,21 @@ namespace NDice.Tests
             Assert.IsType<Die>(builder.Build());
         }
 
-        [Theory]
-        [MemberData(nameof(DieBuilders))]
-        public void Labels(DieBuilder builder)
+        [Fact]
+        public void Labels()
         {
-            Die die = builder.Build();
-            Assert.Equal(die.Labels[0], "test0");
+            Die die = new DieBuilder().WithLabels("test0", "test1", "test2").Build();
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.Equal(die.RollLabel(), die.Labels[die.Current]);
+            }
+        }
+
+        [Fact]
+        public void ShouldAssignLabelsLengthToSides()
+        {
+            var die = new DieBuilder().WithLabels("test", "test2").WithSides(4).Build();
+            Assert.Equal(2, die.Sides);
         }
 
         [Fact]

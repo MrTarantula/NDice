@@ -61,12 +61,15 @@ namespace NDice.Tests
             Assert.IsType<GamblersDie>(builder.Build());
         }
 
-        [Theory]
-        [MemberData(nameof(DieBuilders))]
-        public void Labels(GamblersDieBuilder builder)
+        [Fact]
+        public void Labels()
         {
-            GamblersDie die = builder.Build();
-            Assert.Equal(die.Labels[0], "test0");
+            GamblersDie die = new GamblersDieBuilder().WithLabels("test0", "test1", "test2").Build();
+            for (int i = 0; i < 10; i++)
+            {
+                string label = die.RollLabel();
+                Assert.Equal(label, die.Labels[die.Current]);
+            }
         }
 
         [Fact]
