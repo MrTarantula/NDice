@@ -62,28 +62,11 @@ namespace NDice.Tests
         }
 
         [Fact]
-        public void Labels()
-        {
-            GamblersDie die = new GamblersDieBuilder().WithLabels("test0", "test1", "test2").Build();
-            for (int i = 0; i < 10; i++)
-            {
-                string label = die.RollLabel();
-                Assert.Equal(label, die.Labels[die.Current]);
-            }
-        }
-
-        [Fact]
         public void Implicit()
         {
             GamblersDie die = new GamblersDieBuilder();
 
             Assert.IsType<GamblersDie>(die);
         }
-
-        [Theory]
-        [InlineData(0.25, 0.33, 0.33)]
-        [InlineData(0.25, 0.25, 0.75)]
-        [InlineData(0.9999999999998, 0.0000000000001)]
-        public void ThrowIfNot1(params double[] weights) => Assert.Throws<Exception>(() => new GamblersDieBuilder().WithWeights(weights).Build());
     }
 }
