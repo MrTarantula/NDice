@@ -1,4 +1,4 @@
-version=0.6.3
+version=0.6.4
 
 dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
 dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.randomizers.coverage.xml ./NDice.Randomizers.Tests --filter Category!=Uniformity

@@ -12,25 +12,18 @@ namespace NDice.Randomizers
 
         public int Get(int maxValue)
         {
-            int minValue = 0;
             byte[] buffer = new byte[4];
+            Int64 max = (1 + (Int64)UInt32.MaxValue);
+            Int64 remainder = max % maxValue;
+            UInt32 rand = UInt32.MaxValue;
 
-            if (minValue > maxValue)
-                throw new ArgumentOutOfRangeException("minValue");
-            if (minValue == maxValue) return minValue;
-            Int64 diff = maxValue - minValue;
-            while (true)
+            while (rand > max - remainder)
             {
                 _rnd.GetBytes(buffer);
-                UInt32 rand = BitConverter.ToUInt32(buffer, 0);
-
-                Int64 max = (1 + (Int64)UInt32.MaxValue);
-                Int64 remainder = max % diff;
-                if (rand < max - remainder)
-                {
-                    return (Int32)(minValue + (rand % diff));
-                }
+                rand = BitConverter.ToUInt32(buffer, 0);
             }
+
+            return (Int32)(rand % maxValue);
         }
     }
 }
