@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 
 namespace NDice.Randomizers
 {
+    /// <summary>Uses <c>System.Security.Cryptography.RNGCryptoServiceProvider</c> to roll the die.</summary>
     public class SystemCryptoRandomizer : IRandomizable
     {
         private RNGCryptoServiceProvider _rnd;

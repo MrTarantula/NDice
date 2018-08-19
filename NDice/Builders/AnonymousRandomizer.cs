@@ -2,6 +2,7 @@ using System;
 
 namespace NDice.Builders
 {
+    ///<summary>Randomizer that uses a provided function to roll the die.</summary>
     public class AnonymousRandomizer : IRandomizable
     {
         private Func<int, int> _roller;

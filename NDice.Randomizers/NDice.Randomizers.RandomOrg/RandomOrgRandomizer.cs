@@ -3,6 +3,7 @@ using Community.RandomOrg;
 
 namespace NDice.Randomizers
 {
+    /// <summary>Uses random.org API to fetch random numbers from the web. Rolls are cached to prevent API calls when possible.</summary>
     public class RandomOrgRandomizer : IRandomizable
     {
         private RandomOrgClient _client;

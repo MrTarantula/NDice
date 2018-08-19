@@ -2,6 +2,7 @@ using System;
 
 namespace NDice
 {
+    /// <summary>The reference implementation of <c>IRandomizable</c> using <c>System.Random</c>
     public class SystemRandomizer : IRandomizable
     {
         private Random _rnd;

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NDice" Version="0.6" />
+    <PackageReference Include="NDice" Version="0.7" />
     <PackageReference Include="Troschuetz.Random" Version="4.3.0" />
   </ItemGroup>
 
@@ -17,7 +17,7 @@
     <PackageId>NDice.Randomizers.SystemCrypto</PackageId>
     <Title>NDice.Randomizers.SystemCrypto</Title>
     <Description>Randomizer for NDice using System.Security.Cryptography</Description>
-    <Version>0.6.0</Version>
+    <Version>0.7.0</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>

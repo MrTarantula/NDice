@@ -5,16 +5,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.6" />
-        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.6" />
-        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.6" />
+        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.7" />
+        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.7" />
+        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.7" />
     </ItemGroup>
 
     <PropertyGroup>
         <PackageId>NDice.Randomizers</PackageId>
         <Title>NDice.Randomizers</Title>
         <Description>Official NDice metapackage for randomizers</Description>
-        <Version>0.6.0</Version>
+        <Version>0.7.0</Version>
         <Authors>Ryan Tauriainen</Authors>
         <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>

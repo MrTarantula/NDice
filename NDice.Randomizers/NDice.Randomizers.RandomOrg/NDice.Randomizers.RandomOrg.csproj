@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Community.RandomOrg" Version="1.8.7" />
-    <PackageReference Include="NDice" Version="0.6" />
+    <PackageReference Include="NDice" Version="0.7" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
     <PackageId>NDice.Randomizers.RandomOrg</PackageId>
     <Title>NDice.Randomizers.RandomOrg</Title>
     <Description>Randomizer for NDice using random.org API</Description>
-    <Version>0.6.0</Version>
+    <Version>0.7.0</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>

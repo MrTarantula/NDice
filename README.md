@@ -195,15 +195,15 @@ var tdie = new TappersDieBuilder()
 ## Future Work
 
 - [ ] More real world examples
-- [x] Percentages/ratios for weight
 - [ ] Include common dice like the examples (another package)
+- [ ] More dice algorithms! (statisticians/dice enthusiasts needed. PRs welcome)
+- [x] Percentages/ratios for weight
 - [x] Built-in labels
 - [x] Fluent die builder
 - [x] Abstraction for randomizer, so other libs/algorithms may be used
 - [x] Extension package for other implementations of `IRandomizable`
-- [ ] More dice algorithms! (statisticians/dice enthusiasts needed. PRs welcome)
-- [ ] More tests!
-- [ ] Exceptions!
+- [x] More tests!
+- [x] Exceptions!
 
 ## Acknowledgements
 

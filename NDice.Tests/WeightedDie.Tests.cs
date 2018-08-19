@@ -57,6 +57,6 @@ namespace NDice.Tests
         [InlineData(0.25, 0.33, 0.33)]
         [InlineData(0.25, 0.25, 0.75)]
         [InlineData(0.9999999999998, 0.0000000000001)]
-        public void NormalizeDoubleWeights_ThrowIfNot1(params double[] weights) => Assert.Throws<Exception>(() => new WeightedDie(weights));
+        public void NormalizeDoubleWeights_ThrowIfNot1(params double[] weights) => Assert.Throws<NDiceException>(() => new WeightedDie(weights));
     }
 }

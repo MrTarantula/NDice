@@ -2,13 +2,16 @@ using System;
 
 namespace NDice.Builders
 {
+    /// <summary>Base type for creating weighted die builders.</sumary>
     public abstract class BaseWeightedBuilder<TDie, TBuilder> : BaseBuilder<TDie, TBuilder>
     where TDie : WeightedDie
     where TBuilder : BaseWeightedBuilder<TDie, TBuilder>
     {
         protected int[] _weights;
-        protected bool _hasWeights;
+        protected bool _hasWeights = false;
 
+        /// <summary>Adds sides to die.static If labels or weights are also added, number of labels or weights will determine the number of sides.</summary>
+        /// <param name="sides">Number of sides of the die.</param>
         public override TBuilder WithSides(int sides)
         {
             if (!_hasLabels && !_hasWeights)
@@ -19,11 +22,13 @@ namespace NDice.Builders
             return _instance;
         }
 
+        /// <summary>Adds labels to die. Specifying sides isn't necessary and will be overridden bu the number of labels.</summary>
+        /// <param name="labels">Labels for the die.</param>
         public override TBuilder WithLabels(params string[] labels)
         {
             if (_hasWeights && _weights.Length != labels.Length)
             {
-                throw new ArgumentException("Weights and labels must be the same length");
+                throw new NDiceException("Weights and labels must be the same length");
             }
 
             _labels = labels;
@@ -32,11 +37,13 @@ namespace NDice.Builders
             return _instance;
         }
 
+        /// <summary>Adds weights to die. Specifying sides isn't necessary and will be overridden bu the number of weights.</summary>
+        /// <param name="weights">Pre-calculated weights of the sides of the die.</param>
         public TBuilder WithWeights(params int[] weights)
         {
             if (_hasLabels && _labels.Length != weights.Length)
             {
-                throw new ArgumentException("Weights and labels must be the same length");
+                throw new NDiceException("Weights and labels must be the same length");
             }
 
             _weights = weights;
@@ -45,13 +52,15 @@ namespace NDice.Builders
             return _instance;
         }
 
+        /// <summary>Adds weights to die. Specifying sides isn't necessary and will be overridden bu the number of weights.</summary>
+        /// <param name="weights">Pre-calculated weights of the sides of the die. Total of weights must add up to 1.0.</param>
         public TBuilder WithWeights(params double[] weights)
         {
             if (_hasLabels && _labels.Length != weights.Length)
             {
-                throw new ArgumentException("Weights and labels must be the same length");
+                throw new NDiceException("Weights and labels must be the same length");
             }
-            
+
             decimal total = 0M;
             decimal[] decWeights = Array.ConvertAll(weights, x => (decimal)x);
 
@@ -66,7 +75,7 @@ namespace NDice.Builders
 
             if (total != 1.0M)
             {
-                throw new Exception("Weights must add up to 1.0");
+                throw new NDiceException($"Weights must add up to 1.0. Current sum: {total}");
             }
 
             var multiplier = 1 / smallest;

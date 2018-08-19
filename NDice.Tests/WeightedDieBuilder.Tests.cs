@@ -60,13 +60,13 @@ namespace NDice.Tests
         }
 
         [Fact]
-        public void ThrowWeights() => Assert.Throws<ArgumentException>(() => new WeightedDieBuilder().WithLabels("test", "test2").WithWeights(1, 2, 3, 4));
+        public void ThrowWeights() => Assert.Throws<NDiceException>(() => new WeightedDieBuilder().WithLabels("test", "test2").WithWeights(1, 2, 3, 4));
 
         [Fact]
-        public void ThrowWeightsDouble() => Assert.Throws<ArgumentException>(() => new WeightedDieBuilder().WithLabels("test", "test2").WithWeights(0.1, 0.2, 0.3, 0.4));
+        public void ThrowWeightsDouble() => Assert.Throws<NDiceException>(() => new WeightedDieBuilder().WithLabels("test", "test2").WithWeights(0.1, 0.2, 0.3, 0.4));
 
         [Fact]
-        public void ThrowLabels() => Assert.Throws<ArgumentException>(() => new WeightedDieBuilder().WithWeights(1, 2, 3, 4).WithLabels("test", "test2"));
+        public void ThrowLabels() => Assert.Throws<NDiceException>(() => new WeightedDieBuilder().WithWeights(1, 2, 3, 4).WithLabels("test", "test2"));
 
         [Fact]
         public void Implicit()
@@ -80,6 +80,6 @@ namespace NDice.Tests
         [InlineData(0.25, 0.33, 0.33)]
         [InlineData(0.25, 0.25, 0.75)]
         [InlineData(0.9999999999998, 0.0000000000001)]
-        public void ThrowIfNot1(params double[] weights) => Assert.Throws<Exception>(() => new WeightedDieBuilder().WithWeights(weights).Build());
+        public void ThrowIfNot1(params double[] weights) => Assert.Throws<NDiceException>(() => new WeightedDieBuilder().WithWeights(weights).Build());
     }
 }

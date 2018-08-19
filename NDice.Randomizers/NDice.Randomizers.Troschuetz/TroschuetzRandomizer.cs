@@ -3,6 +3,7 @@ using Troschuetz.Random;
 
 namespace NDice.Randomizers
 {
+    /// <summary>Uses <c>Troschuetz.Random</c>> to roll the die.</summary>
     public class TroschuetzRandomizer : IRandomizable
     {
         private TRandom _rnd;
