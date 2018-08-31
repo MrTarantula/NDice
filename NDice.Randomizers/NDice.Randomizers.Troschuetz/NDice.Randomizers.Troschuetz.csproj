@@ -9,15 +9,11 @@
     <PackageReference Include="Troschuetz.Random" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\NDice\NDice.csproj" />
-  </ItemGroup>
-
   <PropertyGroup>
     <PackageId>NDice.Randomizers.Troschuetz</PackageId>
     <Title>NDice.Randomizers.Troschuetz</Title>
     <Description>Randomizer for NDice using Troschuetz.Random</Description>
-    <Version>0.8.0</Version>
+    <Version>0.8.1</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>

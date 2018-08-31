@@ -1,12 +1,12 @@
 #!/bin/bash
-version=0.8.0
+version=0.8.1
 
 if [ $TRAVIS_PULL_REQUEST="false" ]
 then
     dotnet pack ./NDice -c Release /p:PackageVersion=$version -o ../build/ndice
     dotnet nuget push ./build/ndice/ -k $nugetkey -s https://api.nuget.org/v3/index.json
 
-    sleep 9m
+    sleep 5m
 
     dotnet pack ./NDice.Randomizers/NDice.Randomizers.RandomOrg -c Release /p:PackageVersion=$version -o ../../build/rando
     dotnet pack ./NDice.Randomizers/NDice.Randomizers.Troschuetz -c Release /p:PackageVersion=$version -o ../../build/rando
@@ -16,7 +16,7 @@ then
         dotnet nuget push $file -k $nugetkey -s https://api.nuget.org/v3/index.json
     done
 
-    sleep 9m
+    sleep 5m
 
     dotnet pack ./NDice.Randomizers/NDice.Randomizers -c Release /p:PackageVersion=$version -o ../../build/meta
     dotnet nuget push ./build/meta/ -k $nugetkey -s https://api.nuget.org/v3/index.json
