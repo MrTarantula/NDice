@@ -28,6 +28,7 @@ Dice toolkit for .Net. Construct dice with interesting behaviors.
   - [Weights](#weights)
   - [Tapped/Untapped](#tapped/untapped)
   - [Advanced Die Examples](#advanced-die-examples)
+- [Contributing](#contributing)
 - [Future Work](#future-work)
 - [Acknowledgements](#Acknowledgements)
 
@@ -191,6 +192,10 @@ var tdie = new TappersDieBuilder()
    .WithRandomizer(maxValue => new System.Random().Next(maxValue))
    .Build();
 ```
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Future Work
 
