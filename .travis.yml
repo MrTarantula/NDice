@@ -1,12 +1,11 @@
 language: csharp
 mono: none
 dotnet: 2.1.302
-
 script:
-- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash chmod +x travis.sh; fi'
-- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis.sh; fi'
-- 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash chmod +x travis-pr.sh; fi'
-- 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis-pr.sh; fi'
-
+- chmod +x travis.sh
+- "./travis.sh"
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+env:
+  global:
+    secure: QcSdRVDu1q/F3y+ekP/fHUMkA43JiPRJo6zap7kjxjju1/mj9zi0UHXfC4Zc1I9OxnTvSk57yydEJffIFWoF3HJeoK38rEqTIWECnkxE5Sq8WAUfaHnAKw1rcx3AKWVCKE4PiWqSCBqyp/Bxg+BMhVbAb3bANkz0kbEQz3jp2tgLfWJfYFuNAK/yYM9gLdxKCkURJpWb3IfOKcHWZ+tL/UBI3YOxhxd5YGcBzeMPnSG9ThFN1M5wCTQ1AOerOm11xp1ie0tQF3Dlo5UUy3NIKDyhNXcUsKqrWP1sthzeWhBwuoECZvb4xFRSHFQysNgFiBxU9HUTejYvu4iXosld0Tl8oQOl14MnT0Y78rrcdlBbK+xzCaBVZHZgQ91rPSrgDnkYdOr+JCBrzD7sNlLfKs3AyHvzAlVxYoxBjcpj4PbVsDgL0xkAzHgkDLtFRyCqp8H67o1wbx/kHfEXWBe9rPUEvtbA3CBTIFM//6mecZMYOfXwEJG8VwuHBwO9E2ek1bNPhNm3TmbY9E7oN11zK4tmvpc96o6Xc3AymIsWXMGNOI8vDz457M9hduHxy5lHYPD5HbosUDgYhtkoYG/UAd/BC4bzigUFeP/JvbUh1LUb5kpp6n4NuDXNvw/WfovSBk8L3lMj1VJjA58+nrDKrXmhJpYNwtyFucKn++XIocY=
