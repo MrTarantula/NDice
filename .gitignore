@@ -1,4 +1,5 @@
-.vscode
+.vscode/*
+!.vscode/tasks.json
 [Bb]in/
 [Oo]bj/
-lcov.info
+*lcov.info

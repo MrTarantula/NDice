@@ -1,4 +1,5 @@
-version=0.7.0
+#!/bin/bash
+version=0.7.1
 
 dotnet pack ./NDice -c Release /p:PackageVersion=$version -o ../build/ndice
 dotnet nuget push ./build/ndice/ -k $nuget -s https://api.nuget.org/v3/index.json

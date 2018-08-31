@@ -3,7 +3,7 @@
     /// <summary>Behaves like a fair die, until it is tapped. Then it behaves like a weighted die until it is tapped again.</summary>
     public class TappersDie : WeightedDie
     {
-        private Die _die;
+        private readonly Die _die;
 
         /// <summary>When true, the die is weighted.static When false, the die behaves like an unweighted die.</summary>
         public bool Tapped { get; private set; }
@@ -78,7 +78,7 @@
         /// <summary>Initializes a new gambler's die with known weights. Number of sides is the <c>Length</c> of the weights.</summary>
         /// <param name="tapped">Whether the die is tapped (weighted) or not (unweighted). Default is false.</param>
         /// <param name="weights">Pre-calculated weights of the sides of the die. Total of weights must add up to 1.0.</param>
-        public TappersDie(bool tapped, params double[] weights) : this(new SystemRandomizer(), tapped = false, weights) { }
+        public TappersDie(bool tapped, params double[] weights) : this(new SystemRandomizer(), false, weights) { }
 
         /// <summary>Initializes a new tapper's die with known weights. Number of sides is the <c>Length</c> of the weights.</summary>
         /// <param name="rnd"><c>Random</c> object to be used when rolling the die.</param>

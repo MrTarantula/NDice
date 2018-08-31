@@ -6,10 +6,10 @@ namespace NDice.Randomizers
     /// <summary>Uses random.org API to fetch random numbers from the web. Rolls are cached to prevent API calls when possible.</summary>
     public class RandomOrgRandomizer : IRandomizable
     {
-        private RandomOrgClient _client;
+        private readonly RandomOrgClient _client;
         private IReadOnlyList<int> _cache;
-        private int _cacheSize;
-        private int _index = 0;
+        private readonly int _cacheSize;
+        private int _index;
         private int _lastMax;
 
         public RandomOrgRandomizer(string apiKey) : this(new RandomOrgClient(apiKey)) { }

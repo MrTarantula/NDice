@@ -3,8 +3,10 @@ mono: none
 dotnet: 2.1.302
 
 script:
-- chmod +x travis.sh
-- ./travis.sh
+- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash chmod +x travis.sh; fi'
+- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./travis.sh; fi'
+- 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash chmod +x travis-pr.sh; fi'
+- 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./travis-pr.sh; fi'
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)

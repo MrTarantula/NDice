@@ -8,7 +8,7 @@ namespace NDice.Builders
     where TBuilder : BaseWeightedBuilder<TDie, TBuilder>
     {
         protected int[] _weights;
-        protected bool _hasWeights = false;
+        protected bool _hasWeights;
 
         /// <summary>Adds sides to die.static If labels or weights are also added, number of labels or weights will determine the number of sides.</summary>
         /// <param name="sides">Number of sides of the die.</param>
@@ -62,7 +62,12 @@ namespace NDice.Builders
             }
 
             decimal total = 0M;
-            decimal[] decWeights = Array.ConvertAll(weights, x => (decimal)x);
+            decimal[] decWeights = new decimal[weights.Length];
+            
+            for (int i = 0; i < weights.Length; i++)
+            {
+                decWeights[i] = Convert.ToDecimal(weights[i]);
+            }
 
             var smallest = decWeights[0];
             int[] normalizedWeights = new int[decWeights.Length];

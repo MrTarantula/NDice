@@ -1,0 +1,101 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+            "label": "NDice Tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/NDice.Tests",
+                "--filter",
+                "Category!=Uniformity"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "Randomizers Tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/NDice.Randomizers.Tests",
+                "--filter",
+                "Category!=Uniformity"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        }, {
+            "label": "NDice Uniformity Tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "--filter",
+                "Category=Uniformity"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        }, {
+            "label": "Randomizers Uniformity Tests",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "${workspaceFolder}/NDice.Randomizers.Tests",
+                "--filter",
+                "Category=Uniformity"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        }, {
+            "label": "NDice Coverage",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=../ndice.lcov.info",
+                "${workspaceFolder}/NDice.Tests",
+                "--filter",
+                "Category!=Uniformity"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        }, {
+            "label": "Randomizers Coverage",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "test",
+                "/p:CollectCoverage=true",
+                "/p:CoverletOutputFormat=lcov",
+                "/p:CoverletOutput=../ndice.randomizers.lcov.info",
+                "${workspaceFolder}/NDice.Randomizers.Tests",
+                "--filter",
+                "Category!=Uniformity"
+            ],
+            "problemMatcher": "$msCompile",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+        }
+    ]
+}

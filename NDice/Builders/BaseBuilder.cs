@@ -14,7 +14,7 @@ namespace NDice.Builders
 
         protected IRandomizable _rnd = new SystemRandomizer();
 
-        public BaseBuilder() => _instance = (TBuilder)this;
+        protected BaseBuilder() => _instance = (TBuilder)this;
 
         /// <summary>Adds sides to die.static If labels are also added, number of labels will determine the number of sides.</summary>
         /// <param name="sides">Number of sides of the die.</param>

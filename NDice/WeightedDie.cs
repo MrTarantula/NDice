@@ -35,7 +35,12 @@ namespace NDice
         public WeightedDie(IRandomizable rnd, params double[] weights) : base(rnd, weights.Length)
         {
             decimal total = 0M;
-            decimal[] decWeights = Array.ConvertAll(weights, x => (decimal)x);
+            decimal[] decWeights = new decimal[weights.Length];
+
+            for (int i = 0; i < weights.Length; i++)
+            {
+                decWeights[i] = Convert.ToDecimal(weights[i]);
+            }
 
             var smallest = decWeights[0];
             int[] normalizedWeights = new int[decWeights.Length];
