@@ -1,0 +1,44 @@
+name: Nuget Publish
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 2.2.108
+    - name: NDice
+      run: |
+        dotnet pack ./NDice -c Release /p:PackageVersion=$version -o ../build/ndice
+        dotnet nuget push ./build/ndice/ -k $nugetkey -s https://api.nuget.org/v3/index.json
+    - name: Randomizers Individual
+      run: |
+        sleep 5m
+
+        dotnet pack ./NDice.Randomizers/NDice.Randomizers.RandomOrg -c Release -o ../../build/rando
+        dotnet pack ./NDice.Randomizers/NDice.Randomizers.Troschuetz -c Release -o ../../build/rando
+        dotnet pack ./NDice.Randomizers/NDice.Randomizers.SystemCrypto -c Release -o ../../build/rando
+
+        for file in ./build/rando/*.nupkg; do
+            dotnet nuget push $file -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+        done
+    - name: Randomizers Meta
+      run: |
+        sleep 5m
+
+        dotnet pack ./NDice.Randomizers/NDice.Randomizers -c Release -o ../../build/meta
+        dotnet nuget push ./build/meta/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+    - name: Coverage
+      run: |
+        dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
+        dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.randomizers.coverage.xml ./NDice.Randomizers.Tests --filter Category!=Uniformity
+        bash <(curl -s https://codecov.io/bash) -t ${{ secrets.codeCovToken }}

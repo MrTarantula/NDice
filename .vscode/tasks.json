@@ -37,6 +37,7 @@
             "type": "process",
             "args": [
                 "test",
+                "${workspaceFolder}/NDice.Tests",
                 "--filter",
                 "Category=Uniformity"
             ],

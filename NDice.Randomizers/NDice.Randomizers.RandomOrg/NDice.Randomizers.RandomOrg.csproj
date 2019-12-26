@@ -13,7 +13,7 @@
     <PackageId>NDice.Randomizers.RandomOrg</PackageId>
     <Title>NDice.Randomizers.RandomOrg</Title>
     <Description>Randomizer for NDice using random.org API</Description>
-    <Version>0.8.1</Version>
+    <Version>0.8.2</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseUrl>https://github.com/MrTarantula/NDice/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>
