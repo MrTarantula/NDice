@@ -8,12 +8,13 @@ namespace NDice.Randomizers.Tests
 {
     public class RandomizersTests
     {
-        public static RandomOrgClient client = new RandomOrgClient("4d80880f-2b77-414e-b0b8-9390499381af");
+        private static string RandomOrgApi = "c1792137-761f-4933-a52b-3675c5b3d314";
+        public static RandomOrgClient client = new RandomOrgClient(RandomOrgApi);
         public static TRandom trand = new TRandom();
         public static IEnumerable<object[]> Randomizers()
         {
-            yield return new object[] { new RandomOrgRandomizer("4d80880f-2b77-414e-b0b8-9390499381af", 20) };
-            yield return new object[] { new RandomOrgRandomizer("4d80880f-2b77-414e-b0b8-9390499381af") };
+            yield return new object[] { new RandomOrgRandomizer(RandomOrgApi, 20) };
+            yield return new object[] { new RandomOrgRandomizer(RandomOrgApi) };
             yield return new object[] { new RandomOrgRandomizer(client) };
             yield return new object[] { new TroschuetzRandomizer() };
             yield return new object[] { new TroschuetzRandomizer(trand) };
@@ -39,7 +40,7 @@ namespace NDice.Randomizers.Tests
             var results = new int[4];
             for (int x = 0; x < 20; x++)
             {
-                var rnd = new RandomOrgRandomizer("4d80880f-2b77-414e-b0b8-9390499381af", 0);
+                var rnd = new RandomOrgRandomizer(RandomOrgApi, 0);
                 var die = new Die(rnd, 4);
                 results[die.Roll()]++;
             }
