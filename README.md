@@ -1,13 +1,11 @@
 # NDice
 
-[![Build Status](https://img.shields.io/travis/MrTarantula/NDice.svg?branch=master)](https://travis-ci.org/MrTarantula/NDice)
+[![Build Status](https://github.com/MrTarantula/NDice/workflows/Nuget%20Publish/badge.svg)](https://github.com/MrTarantula/NDice/actions?query=workflow%3A%22Nuget+Publish%22)
 [![Codecov](https://img.shields.io/codecov/c/github/mrtarantula/NDice.svg)](https://codecov.io/gh/MrTarantula/NDice)
 [![NuGet](https://img.shields.io/nuget/v/NDice.svg)](https://nuget.org/packages/NDice)
 [![NuGet](https://img.shields.io/nuget/dt/NDice.svg)](https://nuget.org/packages/NDice)
 
 Dice toolkit for .Net. Construct dice with interesting behaviors.
-
-> API is very unstable and will be for a while.
 
 ## Table of Contents
 
@@ -128,6 +126,10 @@ var die1 = new WeightedDie(rnd, 1, 1, 1, 7, 1, 1, 1);
 
 var die2 = new GamblersDie(rnd, 20);
 ```
+
+### `IRandomizable` Implementations
+
+Alternative randomizers are available and can be used as examples when creating your own. They are available as a metapackage `NDice.Randomizers` or individually as described in the [`NDice.Randomizers` page](NDice.Randomizers/README.md).
 
 ## Real World Examples
 
