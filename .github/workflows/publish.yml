@@ -2,8 +2,8 @@ name: Nuget Publish
 
 on:
   push:
-    branches: 
-      - master
+    tags:
+      - v*
 
 jobs:
   build:
@@ -18,8 +18,8 @@ jobs:
         dotnet-version: 2.2.108
     - name: NDice
       run: |
-        dotnet pack ./NDice -c Release /p:PackageVersion=$version -o ../build/ndice
-        dotnet nuget push ./build/ndice/ -k $nugetkey -s https://api.nuget.org/v3/index.json
+        dotnet pack ./NDice -c Release -o ../build/ndice
+        dotnet nuget push ./build/ndice/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
     - name: Randomizers Individual
       run: |
         sleep 5m
