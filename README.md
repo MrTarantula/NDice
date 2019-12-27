@@ -18,6 +18,7 @@ Dice toolkit for .Net. Construct dice with interesting behaviors.
   - [TappersDie](#tappersdie)
   - [Die Examples](#die-examples)
 - [IRandomizable](#irandomizable)
+  - [IRandomizable Implementations](#irandomizable-implementations)
 - [Real World Examples](#real-world-examples)
 - [Building Advanced Dice](#building-advanced-dice)
   - [Sides](#sides)
