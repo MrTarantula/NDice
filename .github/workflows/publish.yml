@@ -6,61 +6,91 @@ on:
       - v*
 
 jobs:
-  build:
-
+  NDice:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.x
-    - name: NDice
-      run: |
-        dotnet pack ./NDice -c Release -o ../build/ndice
-        dotnet nuget push ../build/ndice/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
-    - name: Randomizers Individual
-      run: |
-        sleep 5m
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Publish
+        run: |
+          dotnet pack ./NDice -c Release -o ../build/ndice
+          dotnet nuget push ../build/ndice/*.nupkg -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+  Randomizers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Publish
+        run: |
+          sleep 5m
 
-        dotnet pack ./NDice.Randomizers/NDice.Randomizers.RandomOrg -c Release -o ../../build/rando
-        dotnet pack ./NDice.Randomizers/NDice.Randomizers.Troschuetz -c Release -o ../../build/rando
-        dotnet pack ./NDice.Randomizers/NDice.Randomizers.SystemCrypto -c Release -o ../../build/rando
+          dotnet pack ./NDice.Randomizers/NDice.Randomizers.RandomOrg -c Release -o ../../build/rando
+          dotnet pack ./NDice.Randomizers/NDice.Randomizers.Troschuetz -c Release -o ../../build/rando
+          dotnet pack ./NDice.Randomizers/NDice.Randomizers.SystemCrypto -c Release -o ../../build/rando
 
-        for file in ../../build/rando/*.nupkg; do
-            dotnet nuget push $file -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
-        done
-    - name: Randomizers Meta
-      run: |
-        sleep 5m
+          for file in ../../build/rando/*.nupkg; do
+              dotnet nuget push $file -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+          done
+  Randomizers-Meta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Publish
+        run: |
+          sleep 5m
 
-        dotnet pack ./NDice.Randomizers/NDice.Randomizers -c Release -o ../../build/meta
-        dotnet nuget push ../../build/meta/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
-    - name: Coverage
-      run: |
-        dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
-        dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.randomizers.coverage.xml ./NDice.Randomizers.Tests --filter Category!=Uniformity
-        bash <(curl -s https://codecov.io/bash) -t ${{ secrets.codeCovToken }}
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-    - name: Zip Folder
-      run: zip -r ./build NDice-${{ github.ref }}.zip
-    - name: Upload Release Asset
-      id: upload-release-asset 
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-        asset_path: ./NDice-${{ github.ref }}.zip
-        asset_name: NDice-${{ github.ref }}.zip
-        asset_content_type: application/zip
+          dotnet pack ./NDice.Randomizers/NDice.Randomizers -c Release -o ../../build/meta
+          dotnet nuget push ../../build/meta/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+  Coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Run
+        run: |
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.randomizers.coverage.xml ./NDice.Randomizers.Tests --filter Category!=Uniformity
+          bash <(curl -s https://codecov.io/bash) -t ${{ secrets.codeCovToken }}
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Zip Release
+        run: zip -r ./build NDice-${{ github.ref }}.zip
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./NDice-${{ github.ref }}.zip
+          asset_name: NDice-${{ github.ref }}.zip
+          asset_content_type: application/zip
