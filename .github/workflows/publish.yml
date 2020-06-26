@@ -19,7 +19,7 @@ jobs:
     - name: NDice
       run: |
         dotnet pack ./NDice -c Release -o ../build/ndice
-        dotnet nuget push ./build/ndice/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+        dotnet nuget push ../build/ndice/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
     - name: Randomizers Individual
       run: |
         sleep 5m
@@ -28,7 +28,7 @@ jobs:
         dotnet pack ./NDice.Randomizers/NDice.Randomizers.Troschuetz -c Release -o ../../build/rando
         dotnet pack ./NDice.Randomizers/NDice.Randomizers.SystemCrypto -c Release -o ../../build/rando
 
-        for file in ./build/rando/*.nupkg; do
+        for file in ../../build/rando/*.nupkg; do
             dotnet nuget push $file -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
         done
     - name: Randomizers Meta
@@ -36,7 +36,7 @@ jobs:
         sleep 5m
 
         dotnet pack ./NDice.Randomizers/NDice.Randomizers -c Release -o ../../build/meta
-        dotnet nuget push ./build/meta/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
+        dotnet nuget push ../../build/meta/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
     - name: Coverage
       run: |
         dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
