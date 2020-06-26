@@ -18,15 +18,7 @@ jobs:
         run: |
           dotnet pack ./NDice -c Release -o ../build/ndice
           dotnet nuget push ../build/ndice/*.nupkg -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
-  Randomizers:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.x
-      - name: Publish
+      - name: Randomizers Individual
         run: |
           sleep 5m
 
@@ -37,41 +29,12 @@ jobs:
           for file in ../../build/rando/*.nupkg; do
               dotnet nuget push $file -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
           done
-  Randomizers-Meta:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.x
-      - name: Publish
+      - name: Ranomizers Meta
         run: |
           sleep 5m
 
           dotnet pack ./NDice.Randomizers/NDice.Randomizers -c Release -o ../../build/meta
-          dotnet nuget push ../../build/meta/ -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
-  Coverage:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.x
-      - name: Run
-        run: |
-          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
-          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.randomizers.coverage.xml ./NDice.Randomizers.Tests --filter Category!=Uniformity
-          bash <(curl -s https://codecov.io/bash) -t ${{ secrets.codeCovToken }}
-  Release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: 3.1.x
+          dotnet nuget push ../../build/meta/*.nupkg -k ${{ secrets.nugetKey }} -s https://api.nuget.org/v3/index.json
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -79,11 +42,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
+          release_name: Release ${GITHUB_REF:10}
           draft: false
           prerelease: false
       - name: Zip Release
-        run: zip -r ./build NDice-${{ github.ref }}.zip
+        run: zip -r ./build NDice-${GITHUB_REF:10}.zip
       - name: Upload Release Asset
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
@@ -91,6 +54,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./NDice-${{ github.ref }}.zip
-          asset_name: NDice-${{ github.ref }}.zip
+          asset_path: ./NDice-${GITHUB_REF:10}.zip
+          asset_name: NDice-${GITHUB_REF:10}.zip
           asset_content_type: application/zip
+  Coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 2.x.x      
+      - name: Coverage
+        run: |
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.coverage.xml ./NDice.Tests --filter Category!=Uniformity
+          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../ndice.randomizers.coverage.xml ./NDice.Randomizers.Tests --filter Category!=Uniformity
+          bash <(curl -s https://codecov.io/bash) -t ${{ secrets.codeCovToken }}
