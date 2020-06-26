@@ -14,16 +14,16 @@
 
 
     <ItemGroup>
-        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.8.*" />
-        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.8.*" />
-        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.8.*" />
+        <PackageReference Include="NDice.Randomizers.RandomOrg" Version="0.9.*" />
+        <PackageReference Include="NDice.Randomizers.SystemCrypto" Version="0.9.*" />
+        <PackageReference Include="NDice.Randomizers.Troschuetz" Version="0.9.*" />
     </ItemGroup>
 
     <PropertyGroup>
         <PackageId>NDice.Randomizers</PackageId>
         <Title>NDice.Randomizers</Title>
         <Description>Official NDice metapackage for randomizers</Description>
-        <Version>0.8.2</Version>
+        <Version>0.9.0</Version>
         <Authors>Ryan Tauriainen</Authors>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>
