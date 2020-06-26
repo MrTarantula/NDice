@@ -21,7 +21,7 @@
     <PackageId>NDice.Randomizers.SystemCrypto</PackageId>
     <Title>NDice.Randomizers.SystemCrypto</Title>
     <Description>Randomizer for NDice using System.Security.Cryptography</Description>
-    <Version>0.9.0</Version>
+    <Version>0.9.1</Version>
     <Authors>Ryan Tauriainen</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/MrTarantula/NDice</RepositoryUrl>
