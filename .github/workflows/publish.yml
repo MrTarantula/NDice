@@ -15,7 +15,7 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.2.108
+        dotnet-version: 3.1.x
     - name: NDice
       run: |
         dotnet pack ./NDice -c Release -o ../build/ndice
